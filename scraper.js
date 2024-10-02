@@ -76,7 +76,7 @@ async function scrapeMarketNews(driver) {
 
         // Get the latest release time from the database
         getLatestReleaseTime(async (latestReleaseTime) => {
-            console.log(`Latest release time in database: ${latestReleaseTime}`);
+            // console.log(`Latest release time in database: ${latestReleaseTime}`);
 
             for (let article of articles) {
                 let headline = await article.findElement(By.css('h5.color-red')).getText();
@@ -90,9 +90,10 @@ async function scrapeMarketNews(driver) {
                 // Only insert news if its release_time is more recent than the latest in the database
                 if (!latestReleaseTime || formattedDatetime > latestReleaseTime) {
                     insertNews(headline, summary, formattedDatetime, moreInfo);
-                } else {
-                    console.log(`Skipping: ${headline} (Release time: ${formattedDatetime})`);
-                }
+                } 
+                // else {
+                //     console.log(`Skipping: ${headline} (Release time: ${formattedDatetime})`);
+                // }
             }
         });
     } catch (error) {
@@ -104,11 +105,11 @@ async function scrapeMarketNews(driver) {
 function startCountdown(duration, callback) {
     let remainingTime = duration;
     let countdownInterval = setInterval(() => {
-        let minutes = Math.floor(remainingTime / 60);
-        let seconds = remainingTime % 60;
+        // let minutes = Math.floor(remainingTime / 60);
+        // let seconds = remainingTime % 60;
 
         console.clear();
-        console.log(`Next scraping attempt in: ${minutes}m ${seconds}s`);
+        // console.log(`Next scraping attempt in: ${minutes}m ${seconds}s`);
 
         remainingTime--;
 
