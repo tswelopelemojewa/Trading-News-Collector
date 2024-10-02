@@ -1,6 +1,16 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const sqlite3 = require('sqlite3').verbose();
 const chrome = require('selenium-webdriver/chrome');
+const express = require('express');
+
+const app = express();
+app.use(express.json());
+app.use(express.static('public'));
+
+
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`started on : ${PORT}`));
 
 // Initialize SQLite database connection
 let db = new sqlite3.Database('./market_news.db', (err) => {
