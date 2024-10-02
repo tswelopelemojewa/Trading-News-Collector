@@ -15,7 +15,7 @@ SET release_time = datetime(release_time, '+2 hours')
 DROP TABLE news
 
 DELETE FROM news
-WHERE id = 90
+WHERE id = 9
 
 CREATE TABLE IF NOT EXISTS news (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
